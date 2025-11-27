@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohamed Abdalla Omer — Professional Portfolio</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="logo">Mohamed Abdalla</div>
+  <nav>
+    <a href="#hero">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <i class="fa-solid fa-circle-half-stroke toggle" onclick="toggleTheme()"></i>
+</header>
+
+<section class="hero" id="hero">
+  <div class="hero-text">
+    <h1>Hello, I'm Mohamed Abdalla Omer <span class="typing"></span></h1>
+    <p class="hero-desc">I create modern, functional, and interactive web experiences as a Web Developer & UI/UX Designer.</p>
+    <button class="btn">Download CV</button>
+  </div>
+  <img src="Mohamed.JPG" alt="Profile Picture" class="profile-pic">
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am a passionate developer with experience in building responsive websites, applications, and designing user interfaces. I enjoy creating digital experiences that are both functional and visually appealing.</p>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="grid">
+    <div class="card">Frontend: HTML, CSS, JavaScript, React</div>
+    <div class="card">Backend: PHP, Node.js, MySQL</div>
+    <div class="card">UI/UX: Figma, Web Animations, Responsive Design</div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="filter-btns">
+    <button class="active" onclick="filterProjects('all')">All</button>
+    <button onclick="filterProjects('web')">Web</button>
+    <button onclick="filterProjects('mobile')">Mobile</button>
+    <button onclick="filterProjects('ui')">UI/UX</button>
+  </div>
+
+  <div class="projects-grid">
+    <!-- Online Laptop Shop -->
+    <div class="project-card" data-type="web">
+      <img src="images/online-laptop-shop.png" alt="Online Laptop Shop">
+      <div class="project-info">
+        <h3>Online Laptop Shop</h3>
+        <p>A full-featured e-commerce website for laptops with responsive design and smooth UI/UX.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- Portfolio -->
+    <div class="project-card" data-type="web">
+      <img src="images/portfolio.png" alt="Portfolio">
+      <div class="project-info">
+        <h3>Portfolio</h3>
+        <p>My personal portfolio website showcasing projects, skills, and services with interactive design.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+    </div>
+
+    <!-- AZU Web Page -->
+    <div class="project-card" data-type="web">
+      <img src="images/azu-web-page.png" alt="AZU Web Page">
+      <div class="project-info">
+        <h3>AZU Web Page</h3>
+        <p>A modern university website design focusing on accessibility, mobile responsiveness, and clean UI.</p>
+        <a href="#" class="btn">View Project</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">Web Development: Responsive websites for business and personal projects.</div>
+    <div class="card">Mobile UI: Beautiful interfaces for apps and digital solutions.</div>
+    <div class="card">Branding: Logos and full brand identity design.</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <form id="contactForm">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" rows="5" required></textarea>
+    <button class="btn" type="submit">Send Message</button>
+  </form>
+  <p id="contactMessage" style="color: #4BB543; margin-top: 10px; display: none;">Your message has been successfully received!</p>
+  <p><strong>Email:</strong> <a href="mailto:sudaniz499@gmail.com">sudaniz499@gmail.com</a></p>
+  <p><strong>Phone:</strong> <a href="https://wa.me/211927334845" target="_blank">+211927334845</a></p>
+</section>
+
+<footer>
+  <p>© 2025 Mohamed Abdalla. All rights reserved.</p>
+  <div class="socials">
+    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() { document.body.classList.toggle('light'); }
+
+  // Typing effect
+  let i = 0, text = "Moh";
+  setInterval(() => {
+    document.querySelector('.typing').textContent = text.slice(0, i);
+    i = (i + 1) % (text.length + 1);
+  }, 200);
+
+  // Filter Projects
+  function filterProjects(type) {
+    document.querySelectorAll('.filter-btns button').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(p => {
+      p.style.display = (type === 'all' || p.dataset.type === type) ? 'block' : 'none';
+    });
+  }
+
+  // Contact Form Success Message
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const msg = document.getElementById('contactMessage');
+    msg.style.display = 'block';
+    setTimeout(() => { msg.style.display = 'none'; }, 5000);
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
